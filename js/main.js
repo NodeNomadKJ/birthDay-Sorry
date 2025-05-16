@@ -439,5 +439,5 @@ function setPhoneNumber(phoneNumber) {
     }
 }
 
-// You can call this function with the actual phone number
-// setPhoneNumber('1234567890');
+// Set the phone number
+setPhoneNumber('7260889723');
