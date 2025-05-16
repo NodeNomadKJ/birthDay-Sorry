@@ -1,0 +1,1184 @@
+/* 
+ * Main Stylesheet for Birthday Apology Website
+ * Contains layout, typography, colors, and general styling
+ */
+
+/* ===== CSS Variables ===== */
+:root {
+    /* Colors */
+    --primary-color: #FFD1DC; /* Soft pink */
+    --secondary-color: #E6E6FA; /* Lavender */
+    --accent-color: #B76E79; /* Rose gold */
+    --text-dark: #333333;
+    --text-light: #FFFFFF;
+    
+    /* Expanded Pastel Palette */
+    --pastel-pink: #FFCAD4; /* Lighter pink */
+    --pastel-lavender: #D4C1EC; /* Soft purple */
+    --pastel-blue: #A6D1E6; /* Baby blue */
+    --pastel-mint: #C7F0DB; /* Mint green */
+    --pastel-yellow: #FFF3B0; /* Soft yellow */
+    --pastel-peach: #FFD8BE; /* Peach */
+    
+    /* Gradient Backgrounds */
+    --gradient-bg: linear-gradient(135deg, #FFFFFF, #FFD1DC);
+    --gradient-pink: linear-gradient(135deg, #FFD1DC, #FFCAD4);
+    --gradient-lavender: linear-gradient(135deg, #E6E6FA, #D4C1EC);
+    --gradient-rainbow: linear-gradient(135deg, #FFCAD4, #D4C1EC, #A6D1E6, #C7F0DB, #FFF3B0);
+    
+    /* Typography */
+    --heading-font: 'Playfair Display', serif;
+    --body-font: 'Montserrat', sans-serif;
+    
+    /* Spacing */
+    --section-padding: 5rem 1rem;
+    --container-width: 1200px;
+    
+    /* Transitions */
+    --transition-slow: 0.5s ease;
+    --transition-medium: 0.3s ease;
+    --transition-fast: 0.2s ease;
+}
+
+/* ===== Reset & Base Styles ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--body-font);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background: var(--gradient-bg);
+    background-attachment: fixed;
+    overflow-x: hidden;
+}
+
+/* ===== Fancy Heart Styles ===== */
+.heart-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+    overflow: hidden;
+}
+
+/* Bubble Heart */
+.bubble-heart {
+    position: absolute;
+    font-size: 1.5rem;
+    color: var(--pastel-pink);
+    opacity: 0.7;
+    filter: blur(0.5px);
+    text-shadow: 0 0 5px rgba(255, 209, 220, 0.5);
+    animation: bubble-float 15s linear infinite;
+}
+
+@keyframes bubble-float {
+    0% {
+        transform: translateY(100vh) scale(1);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-100px) scale(0.5);
+        opacity: 0;
+    }
+}
+
+/* Pixel Heart */
+.pixel-heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath fill='%23FFD1DC' d='M1,1 h2 v1 h2 v1 h2 v-1 h2 v-1 h2 v2 h-1 v1 h-1 v1 h-1 v1 h-1 v1 h-1 v1 h-1 v-1 h-1 v-1 h-1 v-1 h-1 v-1 h-1 v-1 h-1 v-2 h2 v1 h2 v-1'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.8;
+    animation: pixel-float 20s linear infinite;
+}
+
+@keyframes pixel-float {
+    0% {
+        transform: translate(0, 100vh) rotate(0deg);
+    }
+    100% {
+        transform: translate(calc(100vw - 20px), -20px) rotate(360deg);
+    }
+}
+
+/* Glitter Heart */
+.glitter-heart {
+    position: absolute;
+    font-size: 2rem;
+    background: linear-gradient(45deg, #ff9eb5, #ffd1dc, #ffd8be, #fff3b0);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    animation: glitter-float 25s ease-in-out infinite, gradient-shift 3s ease infinite;
+}
+
+@keyframes glitter-float {
+    0% {
+        transform: translate(50vw, 100vh) rotate(0deg) scale(1);
+        opacity: 0.9;
+    }
+    50% {
+        transform: translate(20vw, 50vh) rotate(180deg) scale(0.8);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translate(80vw, -50px) rotate(360deg) scale(0.5);
+        opacity: 0;
+    }
+}
+
+@keyframes gradient-shift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Pastel Heart */
+.pastel-heart {
+    position: absolute;
+    font-size: 1.8rem;
+    opacity: 0.8;
+    animation: pastel-float 18s linear infinite;
+}
+
+.pastel-heart.pink {
+    color: var(--pastel-pink);
+}
+
+.pastel-heart.lavender {
+    color: var(--pastel-lavender);
+}
+
+.pastel-heart.blue {
+    color: var(--pastel-blue);
+}
+
+.pastel-heart.mint {
+    color: var(--pastel-mint);
+}
+
+.pastel-heart.yellow {
+    color: var(--pastel-yellow);
+}
+
+.pastel-heart.peach {
+    color: var(--pastel-peach);
+}
+
+@keyframes pastel-float {
+    0% {
+        transform: translate(calc(100vw * var(--random-x, 0.5)), 100vh) rotate(0deg);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translate(calc(100vw * var(--random-x, 0.5) - 50px), -50px) rotate(var(--random-rotate, 180deg));
+        opacity: 0;
+    }
+}
+
+/* ===== Typography ===== */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--heading-font);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: var(--accent-color);
+}
+
+h1 {
+    font-size: 3.5rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+}
+
+p {
+    margin-bottom: 1.5rem;
+}
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+a:hover {
+    color: var(--primary-color);
+}
+
+/* ===== Layout ===== */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.section {
+    padding: var(--section-padding);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    transition: opacity 0.8s ease;
+}
+
+/* Section Navigation */
+.section-nav {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 100;
+}
+
+.nav-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--text-light);
+    border: 2px solid var(--accent-color);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.nav-dot:hover, .nav-dot.active {
+    transform: scale(1.3);
+    background-color: var(--accent-color);
+}
+
+/* Section Hearts */
+.section-heart {
+    position: absolute;
+    font-size: 3rem;
+    color: var(--primary-color);
+    opacity: 0.6;
+    z-index: 1;
+    transition: transform 0.5s ease, opacity 0.5s ease, color 0.5s ease;
+}
+
+#hero .section-heart {
+    top: 20%;
+    right: 15%;
+    animation: floatHeart 6s infinite ease-in-out;
+}
+
+#apology .section-heart {
+    bottom: 15%;
+    left: 10%;
+    animation: floatHeart 7s infinite ease-in-out;
+}
+
+#birthday .section-heart {
+    top: 25%;
+    left: 15%;
+    animation: floatHeart 8s infinite ease-in-out;
+}
+
+#gift .section-heart {
+    bottom: 20%;
+    right: 10%;
+    animation: floatHeart 6.5s infinite ease-in-out;
+}
+
+#closing .section-heart {
+    top: 15%;
+    left: 20%;
+    animation: floatHeart 7.5s infinite ease-in-out;
+}
+
+@keyframes floatHeart {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(10deg);
+    }
+}
+
+/* Transitioning Heart */
+.transitioning-heart {
+    position: fixed;
+    font-size: 4rem;
+    color: var(--accent-color);
+    z-index: 999;
+    pointer-events: none;
+    opacity: 0;
+    transition: transform 1s ease, opacity 0.5s ease;
+}
+
+.transitioning-heart.active {
+    opacity: 1;
+}
+
+/* ===== Hero Section ===== */
+#hero {
+    text-align: center;
+    background: var(--gradient-pink);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Add decorative elements to hero section */
+#hero::before, #hero::after {
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23FFCAD4' d='M50,88.9l-4.4-4.5C28.4,67.5,16,55.9,16,41.9c0-11.7,9-20.7,20.7-20.7c6.5,0,12.8,3,16.9,7.8c4.1-4.8,10.4-7.8,16.9-7.8c11.7,0,20.7,9,20.7,20.7c0,14-12.4,25.6-29.6,42.5L50,88.9z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.2;
+    z-index: 0;
+}
+
+#hero::before {
+    top: 10%;
+    left: 5%;
+    transform: rotate(-20deg);
+    animation: float 15s infinite ease-in-out;
+}
+
+#hero::after {
+    bottom: 10%;
+    right: 5%;
+    transform: rotate(20deg);
+    animation: float 18s infinite ease-in-out reverse;
+}
+
+.main-title {
+    font-size: 5rem;
+    margin-bottom: 0.5rem;
+    color: var(--accent-color);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.subtitle {
+    font-size: 2rem;
+    font-family: var(--heading-font);
+    font-style: italic;
+    color: var(--text-dark);
+    opacity: 0.8;
+}
+
+/* Interactive Heart Styles */
+.interactive-heart-container {
+    position: relative;
+    margin: 3rem auto;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.interactive-heart {
+    font-size: 5rem;
+    color: var(--accent-color);
+    transition: transform 0.3s ease, color 0.3s ease;
+    position: relative;
+    z-index: 2;
+    user-select: none;
+}
+
+.interactive-heart-container:hover .interactive-heart {
+    transform: scale(1.5);
+    color: #ff4d6d;
+    animation: heartbeat 1s infinite;
+}
+
+.heart-message {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%) scale(0);
+    font-family: var(--heading-font);
+    font-style: italic;
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    white-space: nowrap;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    z-index: 3;
+}
+
+.interactive-heart-container:hover .heart-message {
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+}
+
+.heart-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes heartbeat {
+    0% {
+        transform: scale(1.5);
+    }
+    15% {
+        transform: scale(1.4);
+    }
+    30% {
+        transform: scale(1.6);
+    }
+    45% {
+        transform: scale(1.4);
+    }
+    60% {
+        transform: scale(1.6);
+    }
+    100% {
+        transform: scale(1.5);
+    }
+}
+
+/* ===== Apology Section ===== */
+#apology {
+    background: var(--gradient-lavender);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Add decorative elements to apology section */
+#apology::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23D4C1EC' d='M50,30 C55,20 65,20 70,30 C75,40 85,40 90,30 C90,50 75,60 70,70 C65,60 55,60 50,70 C45,60 35,60 30,70 C25,60 10,50 10,30 C15,40 25,40 30,30 C35,20 45,20 50,30 Z'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 100px 100px;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.message-card {
+    background-color: var(--text-light);
+    border-radius: 10px;
+    padding: 3rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='%23FFD1DC' fill-opacity='0.05' d='M50,10 L55,30 L75,30 L60,45 L65,65 L50,55 L35,65 L40,45 L25,30 L45,30 Z'/%3E%3C/svg%3E");
+    background-size: 50px 50px;
+}
+
+.message-card::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border: 2px dashed var(--pastel-lavender);
+    border-radius: 15px;
+    z-index: -1;
+    opacity: 0.7;
+    animation: border-shimmer 3s infinite linear;
+}
+
+@keyframes border-shimmer {
+    0% {
+        border-color: var(--pastel-lavender);
+    }
+    33% {
+        border-color: var(--pastel-pink);
+    }
+    66% {
+        border-color: var(--pastel-blue);
+    }
+    100% {
+        border-color: var(--pastel-lavender);
+    }
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.message-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.decorative-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    margin: 10px;
+    pointer-events: none;
+}
+
+/* ===== Birthday Section ===== */
+#birthday {
+    background: linear-gradient(135deg, var(--pastel-pink), var(--pastel-peach));
+    position: relative;
+    overflow: hidden;
+}
+
+/* Add decorative elements to birthday section */
+#birthday::before, #birthday::after {
+    content: '';
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23FFD8BE' d='M50,20 C60,20 60,10 50,10 C40,10 40,20 50,20 Z M20,50 C20,40 10,40 10,50 C10,60 20,60 20,50 Z M80,50 C80,40 70,40 70,50 C70,60 80,60 80,50 Z M50,80 C60,80 60,70 50,70 C40,70 40,80 50,80 Z M65,35 C75,25 65,15 55,25 C45,35 55,45 65,35 Z M35,35 C45,25 35,15 25,25 C15,35 25,45 35,35 Z M65,65 C75,55 65,45 55,55 C45,65 55,75 65,65 Z M35,65 C45,55 35,45 25,55 C15,65 25,75 35,65 Z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.2;
+    z-index: 0;
+    animation: rotate 20s linear infinite;
+}
+
+#birthday::before {
+    top: 10%;
+    left: 10%;
+}
+
+#birthday::after {
+    bottom: 10%;
+    right: 10%;
+    animation-direction: reverse;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.birthday-card {
+    background-color: var(--text-light);
+    border-radius: 10px;
+    padding: 3rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='%23FFD8BE' fill-opacity='0.05' d='M50,20 C60,20 60,10 50,10 C40,10 40,20 50,20 Z M20,50 C20,40 10,40 10,50 C10,60 20,60 20,50 Z M80,50 C80,40 70,40 70,50 C70,60 80,60 80,50 Z M50,80 C60,80 60,70 50,70 C40,70 40,80 50,80 Z M65,35 C75,25 65,15 55,25 C45,35 55,45 65,35 Z M35,35 C45,25 35,15 25,25 C15,35 25,45 35,35 Z M65,65 C75,55 65,45 55,55 C45,65 55,75 65,65 Z M35,65 C45,55 35,45 25,55 C15,65 25,75 35,65 Z'/%3E%3C/svg%3E");
+    background-size: 100px 100px;
+}
+
+.birthday-card::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    right: -15px;
+    bottom: -15px;
+    border: 3px solid transparent;
+    border-radius: 20px;
+    background: linear-gradient(45deg, var(--pastel-pink), var(--pastel-peach), var(--pastel-yellow)) border-box;
+    -webkit-mask:
+        linear-gradient(#fff 0 0) padding-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+    z-index: -1;
+    opacity: 0.7;
+    animation: rotate 10s linear infinite;
+}
+
+.birthday-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.cake-animation {
+    text-align: center;
+    height: 150px;
+    position: relative;
+}
+
+.cake {
+    width: 100px;
+    height: 80px;
+    background: var(--accent-color);
+    border-radius: 10px 10px 0 0;
+    position: relative;
+    margin: 0 auto;
+}
+
+.cake:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    background: var(--primary-color);
+    top: -20px;
+    border-radius: 10px 10px 0 0;
+}
+
+.candle {
+    width: 8px;
+    height: 30px;
+    background: var(--text-light);
+    position: absolute;
+    top: -48px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 4px;
+}
+
+.candle:after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: #FFC700;
+    border-radius: 50%;
+    top: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 10px #FFC700, 0 0 20px #FFC700, 0 0 30px #FFC700;
+    animation: flicker 1s infinite alternate;
+}
+
+/* ===== Gift Section ===== */
+#gift {
+    background: linear-gradient(135deg, var(--pastel-lavender), var(--pastel-blue));
+    position: relative;
+    overflow: hidden;
+}
+
+/* Add decorative elements to gift section */
+#gift::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23A6D1E6' d='M50,10 L55,30 L75,30 L60,45 L65,65 L50,55 L35,65 L40,45 L25,30 L45,30 Z'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 50px 50px;
+    opacity: 0.1;
+    z-index: 0;
+    animation: twinkle-bg 4s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle-bg {
+    0% {
+        opacity: 0.05;
+    }
+    100% {
+        opacity: 0.15;
+    }
+}
+
+.gift-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.interactive-gift {
+    margin-top: 3rem;
+    position: relative;
+}
+
+.gift-box {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    position: relative;
+    cursor: pointer;
+    transition: transform var(--transition-medium);
+    perspective: 1000px;
+}
+
+.gift-box:hover {
+    transform: scale(1.05);
+}
+
+.gift-box::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
+    border-radius: 50%;
+    transform: scale(0);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    z-index: 1;
+}
+
+.gift-box.open::before {
+    transform: scale(2);
+    opacity: 1;
+}
+
+.gift-base {
+    width: 100%;
+    height: 80%;
+    background: linear-gradient(135deg, var(--accent-color) 0%, #d88c95 100%);
+    position: absolute;
+    bottom: 0;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.gift-base::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    top: 0;
+    left: 0;
+}
+
+.gift-ribbon-v {
+    position: absolute;
+    width: 10%;
+    height: 100%;
+    background: #ff9eb5;
+    left: 45%;
+    z-index: 3;
+}
+
+.gift-ribbon-h {
+    position: absolute;
+    width: 100%;
+    height: 10%;
+    background: #ff9eb5;
+    top: 45%;
+    z-index: 3;
+}
+
+.gift-lid {
+    width: 110%;
+    height: 30%;
+    background: linear-gradient(135deg, var(--accent-color) 0%, #d88c95 100%);
+    position: absolute;
+    top: 0;
+    left: -5%;
+    border-radius: 10px;
+    transition: transform var(--transition-slow);
+    transform-origin: bottom center;
+    z-index: 4;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.gift-lid::after {
+    content: '';
+    position: absolute;
+    width: 30%;
+    height: 40%;
+    background: #ff9eb5;
+    border-radius: 50%;
+    top: -20%;
+    left: 35%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.gift-box:hover .gift-lid {
+    transform: rotateX(-20deg) translateY(-10px);
+}
+
+.gift-box.open .gift-lid {
+    transform: rotateX(-110deg) translateY(-40px);
+    animation: openLid 1.2s forwards;
+}
+
+@keyframes openLid {
+    0% {
+        transform: rotateX(0) translateY(0);
+    }
+    40% {
+        transform: rotateX(-60deg) translateY(-20px);
+    }
+    60% {
+        transform: rotateX(-80deg) translateY(-30px);
+    }
+    80% {
+        transform: rotateX(-100deg) translateY(-35px);
+    }
+    100% {
+        transform: rotateX(-110deg) translateY(-40px);
+    }
+}
+
+.gift-message {
+    position: absolute;
+    bottom: -40px;
+    width: 100%;
+    text-align: center;
+    font-size: 1rem;
+    color: var(--text-dark);
+    opacity: 0.7;
+}
+
+/* Cute elements that appear during unboxing */
+.gift-cute-element {
+    position: absolute;
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.gift-box.open .gift-cute-element {
+    opacity: 1;
+    transform: scale(1) rotate(360deg);
+    animation: floatUp 3s ease-in-out infinite;
+}
+
+@keyframes floatUp {
+    0%, 100% {
+        transform: translateY(0) scale(1) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-20px) scale(1.1) rotate(10deg);
+    }
+}
+
+/* Position the cute elements */
+.gift-cute-element:nth-child(1) {
+    top: 20%;
+    left: 20%;
+    font-size: 1.5rem;
+    color: #ff4d6d;
+    transition-delay: 0.2s;
+}
+
+.gift-cute-element:nth-child(2) {
+    top: 10%;
+    right: 20%;
+    font-size: 1.8rem;
+    color: #ffd700;
+    transition-delay: 0.4s;
+}
+
+.gift-cute-element:nth-child(3) {
+    top: 30%;
+    left: 50%;
+    font-size: 2rem;
+    color: #ff9eb5;
+    transition-delay: 0.6s;
+}
+
+.gift-cute-element:nth-child(4) {
+    top: 15%;
+    right: 30%;
+    font-size: 1.6rem;
+    color: #b76e79;
+    transition-delay: 0.8s;
+}
+
+.gift-cute-element:nth-child(5) {
+    top: 25%;
+    left: 30%;
+    font-size: 1.7rem;
+    color: #e6e6fa;
+    transition-delay: 1s;
+}
+
+.gift-reveal {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: var(--text-light);
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='%23A6D1E6' fill-opacity='0.05' d='M50,10 L55,30 L75,30 L60,45 L65,65 L50,55 L35,65 L40,45 L25,30 L45,30 Z'/%3E%3C/svg%3E");
+    background-size: 50px 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+.gift-reveal::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0.2) 100%);
+    pointer-events: none;
+    animation: shine 3s infinite linear;
+}
+
+@keyframes shine {
+    from {
+        transform: translateX(-100%) rotate(45deg);
+    }
+    to {
+        transform: translateX(100%) rotate(45deg);
+    }
+}
+
+.gift-text {
+    font-size: 1.5rem;
+    font-family: var(--heading-font);
+    color: var(--accent-color);
+    margin-bottom: 2rem;
+}
+
+.hidden {
+    display: none;
+}
+
+.countdown-container {
+    text-align: center;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 80px;
+}
+
+.countdown-item span:first-child {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+.countdown-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+}
+
+/* ===== Closing Section ===== */
+#closing {
+    background: var(--gradient-rainbow);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Add decorative elements to closing section */
+#closing::before, #closing::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23FFF3B0' d='M50,50 m-40,0 a40,40 0 1,0 80,0 a40,40 0 1,0 -80,0 M50,50 m-30,0 a30,30 0 1,0 60,0 a30,30 0 1,0 -60,0 M50,50 m-20,0 a20,20 0 1,0 40,0 a20,20 0 1,0 -40,0 M50,50 m-10,0 a10,10 0 1,0 20,0 a10,10 0 1,0 -20,0'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 300px 300px;
+    background-position: center;
+    opacity: 0.05;
+    z-index: 0;
+}
+
+#closing::after {
+    background-size: 200px 200px;
+    animation: pulse 4s ease-in-out infinite alternate;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.03;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0.08;
+        transform: scale(1.1);
+    }
+}
+
+.closing-card {
+    background-color: var(--text-light);
+    border-radius: 10px;
+    padding: 3rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='%23FFF3B0' fill-opacity='0.05' d='M50,50 m-40,0 a40,40 0 1,0 80,0 a40,40 0 1,0 -80,0 M50,50 m-30,0 a30,30 0 1,0 60,0 a30,30 0 1,0 -60,0 M50,50 m-20,0 a20,20 0 1,0 40,0 a20,20 0 1,0 -40,0 M50,50 m-10,0 a10,10 0 1,0 20,0 a10,10 0 1,0 -20,0'/%3E%3C/svg%3E"),
+        radial-gradient(circle at center, rgba(255,255,255,1) 0%, rgba(255,255,255,0.8) 70%, rgba(255,243,176,0.2) 100%);
+    background-size: 100px 100px, 100% 100%;
+    background-position: center, center;
+    background-repeat: repeat, no-repeat;
+}
+
+.closing-card::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: linear-gradient(45deg, var(--pastel-yellow), var(--pastel-pink), var(--pastel-lavender), var(--pastel-blue), var(--pastel-mint));
+    background-size: 400% 400%;
+    border-radius: 15px;
+    z-index: -1;
+    filter: blur(10px);
+    opacity: 0.5;
+    animation: gradient-animation 15s ease infinite;
+}
+
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.closing-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.signature {
+    font-family: var(--heading-font);
+    font-style: italic;
+    font-size: 2rem;
+    margin: 2rem 0;
+    color: var(--accent-color);
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: var(--accent-color);
+    color: var(--text-light);
+    border-radius: 50px;
+    font-weight: 500;
+    transition: all var(--transition-medium);
+    margin-top: 1rem;
+}
+
+.cta-button:hover {
+    background-color: var(--text-dark);
+    color: var(--text-light);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== Footer ===== */
+footer {
+    background-color: var(--text-dark);
+    color: var(--text-light);
+    padding: 2rem 0;
+    text-align: center;
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+    :root {
+        --section-padding: 4rem 1rem;
+    }
+    
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+    
+    .main-title {
+        font-size: 3.5rem;
+    }
+    
+    .subtitle {
+        font-size: 1.5rem;
+    }
+    
+    .message-card,
+    .birthday-card,
+    .closing-card,
+    .gift-reveal {
+        padding: 2rem;
+    }
+    
+    .countdown {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --section-padding: 3rem 1rem;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    .main-title {
+        font-size: 2.5rem;
+    }
+    
+    .subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .message-content,
+    .birthday-content,
+    .closing-content {
+        font-size: 1rem;
+    }
+    
+    .gift-box {
+        width: 150px;
+        height: 150px;
+    }
+}
