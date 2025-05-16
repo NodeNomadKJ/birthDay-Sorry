@@ -1,0 +1,129 @@
+/* 
+ * Custom Cursor Stylesheet
+ * Contains styles for heart-shaped cursor and trailing effects
+ */
+
+/* Hide the default cursor when hovering over the body */
+body {
+    cursor: none;
+}
+
+/* Main heart cursor */
+.heart-cursor {
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    pointer-events: none;
+    z-index: 10000;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease, opacity 0.3s ease;
+}
+
+/* Enhanced state for special interactions */
+.heart-cursor.enhanced .heart-cursor-inner {
+    animation: pulse-cursor-enhanced 0.8s infinite ease-in-out !important;
+    color: #ff4d6d !important;
+    text-shadow: 0 0 10px rgba(255, 77, 109, 0.7), 0 0 20px rgba(255, 77, 109, 0.5) !important;
+}
+
+.heart-cursor-inner {
+    position: absolute;
+    font-size: 30px;
+    color: var(--accent-color);
+    transform: translate(-50%, -50%);
+    animation: pulse-cursor 1.5s infinite ease-in-out;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+    user-select: none;
+}
+
+/* Heart trail effect */
+.heart-trail {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    font-size: 20px;
+    transform: translate(-50%, -50%);
+    animation: trail-fade 1s forwards ease-out;
+    user-select: none;
+}
+
+/* Animations */
+@keyframes pulse-cursor {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@keyframes pulse-cursor-enhanced {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.3);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@keyframes trail-fade {
+    0% {
+        opacity: 0.8;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.3) translateY(-20px);
+    }
+}
+
+/* Responsive adjustments */
+@media (prefers-reduced-motion: reduce) {
+    .heart-cursor-inner {
+        animation: none;
+    }
+    
+    .heart-trail {
+        display: none;
+    }
+}
+
+/* Ensure cursor is visible on all elements */
+a, button, input, textarea, select, .interactive-heart-container, .gift-box, .nav-dot {
+    cursor: none;
+}
+
+/* Special cursor states for different sections */
+#hero .heart-cursor-inner {
+    color: var(--accent-color);
+}
+
+#apology .heart-cursor-inner {
+    color: var(--pastel-lavender);
+}
+
+#birthday .heart-cursor-inner {
+    color: #ff758f;
+}
+
+#gift .heart-cursor-inner {
+    color: var(--pastel-yellow);
+}
+
+#closing .heart-cursor-inner {
+    color: var(--pastel-pink);
+}
+
+/* Hover effects for interactive elements */
+.interactive-heart-container:hover ~ .heart-cursor .heart-cursor-inner,
+.gift-box:hover ~ .heart-cursor .heart-cursor-inner,
+.cta-button:hover ~ .heart-cursor .heart-cursor-inner {
+    transform: translate(-50%, -50%) scale(1.3) !important;
+    animation: pulse-cursor-enhanced 0.8s infinite ease-in-out !important;
+}
